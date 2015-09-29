@@ -8,10 +8,11 @@
  * Controller of the hackathonApp
  */
 angular.module('hackathonApp')
-  .controller('AboutCtrl', function () {
-    this.awesomeThings = [
+  .controller('AboutCtrl', [
+    function() {
+      this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
-    ];
-  });
+      ];
+    }]);
