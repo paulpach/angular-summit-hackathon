@@ -15,21 +15,29 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'route-segment',
+    'view-segment',
+    'ui.bootstrap'
   ])
-  .config(["$routeProvider", function($routeProvider) {
-      $routeProvider
-        .when('/', {
-          templateUrl: 'views/main.html',
-          controller: 'MainCtrl',
-          controllerAs: 'main'
+  .config([
+    '$routeSegmentProvider', '$routeProvider',
+    function($routeSegmentProvider, $routeProvider) {
+      $routeSegmentProvider
+        .when('/types', 'types')
+        .when('/types/:id', 'types.details')
+        .segment('types', {
+          templateUrl: 'views/types.html',
+          controller: 'TypesCtrl',
+          controllerAs: 'typesCtrl'
         })
-        .when('/about', {
-          templateUrl: 'views/about.html',
-          controller: 'AboutCtrl',
-          controllerAs: 'about'
-        })
-        .otherwise({
-          redirectTo: '/'
-        });
+          .within()
+          .segment('details', {
+            templateUrl: 'views/types/details.html',
+            controller: 'TypeDetailsCtrl',
+            controllerAs: 'typeDetailsCtrl',
+            dependencies: ['id']
+          })
+        .up();
+      $routeProvider.otherwise({redirectTo: '/types'});
     }]);

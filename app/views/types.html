@@ -1,0 +1,13 @@
+<div>
+  <div id="types-list" class="list-group col-md-3">
+    <a class="list-group-item"
+      ng-class="{active: ('id' | routeSegmentParam) == t.id}"
+      ng-repeat="t in typesCtrl.types"
+      ng-click="typesCtrl.setSelectedType(t)"
+      ng-href="#{{ 'types.details' | routeSegmentUrl: {id: t.id} }}">
+        <span class="glyphicon glyphicon-briefcase "></span>
+        {{ t.name }}
+    </a>
+  </div>
+  <div app-view-segment="1" class="anim"></div>
+</div>

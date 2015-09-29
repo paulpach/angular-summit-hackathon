@@ -1,0 +1,21 @@
+<div id="type-details" class="col-md-9">
+  <div id="type-details-header">
+    <p>FIX ME!!</p>
+  </div>
+  <datepicker ng-model="typeDetailsCtrl.date" min-mode="month" datepicker-mode="'month'"
+              ng-change="typeDetailsCtrl.update(typeDetailsCtrl.date)"/>
+  <div id="type-details-intervals">
+    <ul class="list-group">
+      <li ng-repeat="d in typeDetailsCtrl.details" class="list-group-item">
+        <div class="intervals-desc">
+          <div class="intervals-desc-range">{{ d.from }} - {{ d.to }}</div>
+          <div class="intervals-desc-type">{{ typeDetailsCtrl.getTypeName(d.typeId) }}</div>
+          <div class="intervals-desc-comment">{{ d.comment }}</div>
+        </div>
+        <div class="intervals-duration">
+          {{ d.from }}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
